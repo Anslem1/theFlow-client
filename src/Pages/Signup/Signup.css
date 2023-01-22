@@ -1,0 +1,94 @@
+main.main {
+     height: 100vh;
+}
+
+.main > div:nth-of-type(1)  > h1{
+     position: relative;
+     top: 100px;
+     text-align: center;
+     font-family: Roboto;
+     font-weight: 500;
+     width: 100%;
+}
+
+.signup-container {
+     display: flex;
+     height: 100%;
+     justify-content: center;
+     gap: 20px;
+     align-items: center;
+     flex-direction: column;
+}
+.main form {
+     display: flex;
+     flex-direction: column;
+     gap: 15px;
+     /* border: 1px solid; */
+}
+
+form > button {
+     display: grid;
+     border-radius: 8px;
+     padding: 7px 10px;
+     outline-color: #c58585;
+     width: 30%;
+     outline-width: 1px;
+     border: none;
+     cursor: pointer;
+     /* box-shadow: 1px 0px 0px 0px rgba(0, 0, 0, 0.2); */
+     background-color: #000;
+     color: white;
+     font-family: Roboto;
+}
+.signup-container > div {
+     display: grid;
+     gap: 15px;
+   
+}
+.signup-container > div > button {
+     display: grid;
+     border-radius: 8px;
+     padding: 7px 10px;
+     outline-color: #c58585;
+     width: 30%;
+     outline-width: 1px;
+     border: 1px solid #9e9e8d;
+     background-color: #000;
+     color: white;
+     font-family: Roboto;
+        cursor: pointer;
+}
+
+.signup-container > div > h1 {
+     font-family: Raleway;
+     text-align: start;
+}
+.input-container {
+     display: grid;
+     gap: 5px;
+}
+.input-container > label {
+     font-family: Roboto;
+}
+
+.input-container > input {
+     border-radius: 8px;
+     padding: 7px 10px;
+     outline-color: #c58585;
+     width: 250px;
+     outline-width: 1px;
+     border: 1px solid #9e9e8d;
+}
+
+
+.is-new{
+font-family: Roboto;
+font-size: 18px;
+/* margin-top: 20px; */
+
+}
+
+@media screen and (max-width: 500px) {
+    
+}
+

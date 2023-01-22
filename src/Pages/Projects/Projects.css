@@ -1,0 +1,110 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+
+.all-project-container {
+     position: absolute;
+     top: 70px;
+     width: 100%;
+}
+.all-project-container > div {
+     display: flex;
+     flex-direction: column;
+     gap: 10px;
+     margin: 20px;
+}
+.all-project-container > div > h1 {
+     font-family: Roboto;
+     font-weight: 400;
+     text-align: center;
+     margin-bottom: 30px;
+}
+
+.project-heading {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+}
+
+.all-project-container > div > div > p {
+     font-family: Open sans;
+     font-weight: 400;
+     font-size: 20px;
+     margin-bottom: 20px;
+}
+.create-project-btn {
+     padding: 8px 15px;
+     border: none;
+     background-color: #000;
+     color: white;
+     font-family: Open sans;
+     border-radius: 10px;
+     cursor: pointer;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     gap: 5px;
+}
+.all-project-container > div > div > button > a {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     gap: 5px;
+}
+
+.all-project-content-container > div {
+     display: grid;
+     justify-content: center;
+     gap: 20px;
+     grid-template-columns: repeat(auto-fit, 200px);
+}
+
+.all-project-content {
+     background-color: rgb(239, 239, 239);
+     padding: 20px;
+     border-radius: 10px;
+     display: flex;
+
+     justify-content: center;
+}
+.all-project-content-container > div > div > a > p {
+     font-size: 25px;
+     font-family: Raleway;
+     margin-bottom: 10px;
+}
+
+.all-project-content-container > div > div > a > img {
+     width: 150px;
+     height: 150px;
+     object-fit: contain;
+}
+
+.link {
+     text-decoration: none;
+     color: inherit;
+}
+
+.no-project-btn{
+     display: table;
+     margin: 15px auto;
+}
+
+@media screen and (max-width: 500px) {
+     .all-project-content-container > div {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          justify-content: center;
+          width: 100%;
+     }
+     .all-project-content-container > div > div > a > img {
+          width: 100px;
+          height: 100px;
+          object-fit: contain;
+     }
+
+     .project-input-container > input {
+          width: 90%;
+          border-radius: 6px;
+          padding: 5px;
+          outline: none;
+          border: 1px solid #cecece;
+     }
+}
