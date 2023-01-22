@@ -62,9 +62,11 @@ nav > button {
           width: 100px;
           padding: 8px 5px;
      }
-
+     
      nav > div {
           padding: 8px 5px;
+          border: 1px solid #fff;
+          margin-right: 20px;
      }
      nav > div > i {
           font-size: 20px;
