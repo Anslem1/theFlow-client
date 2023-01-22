@@ -8,28 +8,27 @@ import './Createproject.css'
 function CreateProjectPage () {
   const updateProjectData = JSON.parse(localStorage.getItem('updateProject'))
 
+
   const [projectName, setProjectName] = useState(
-    updateProjectData.projectName ? updateProjectData.projectName : ''
+    updateProjectData ? updateProjectData.projectName : ''
   )
   const [projectDescription, setProjectDescription] = useState(
-    updateProjectData.projectDescription
-      ? updateProjectData.projectDescription
-      : ''
+    updateProjectData ? updateProjectData.projectDescription : ''
   )
   const [projectImages, setProjectImages] = useState([])
   const [projectTechnologies, setProjectTechnologies] = useState(
-    updateProjectData.projectTechnologies
+    updateProjectData
       ? updateProjectData.projectTechnologies
       : [{ technology: '' }]
   )
   const [projectType, setProjectType] = useState(
-    updateProjectData.projectType ? updateProjectData.projectType : ''
+    updateProjectData ? updateProjectData.projectType : ''
   )
   const [projectGitUrl, setProjectGitUrl] = useState(
-    updateProjectData.projectGitUrl ? updateProjectData.projectGitUrl : ''
+    updateProjectData ? updateProjectData.projectGitUrl : ''
   )
   const [projectSite, setProjectSite] = useState(
-    updateProjectData.projectSite ? updateProjectData.projectSite : ''
+    updateProjectData ? updateProjectData.projectSite : ''
   )
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -111,10 +110,14 @@ function CreateProjectPage () {
         <RenderLoading />
         {project.error && project.error !== 'Could not find that' && (
           <>
-          <p className='error-message'> {project.error}</p>
+            <p className='error-message'> {project.error}</p>
           </>
         )}
-        {updateProjectData ? <h1>Update your project</h1> : <h1>Add a project</h1>}
+        {updateProjectData ? (
+          <h1>Update your project</h1>
+        ) : (
+          <h1>Add a project</h1>
+        )}
         <div>
           <div className='create-project-input-container'>
             <label>Project's name</label>

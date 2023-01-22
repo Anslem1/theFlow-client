@@ -101,6 +101,7 @@ export function signOutUser () {
     if (res.status === 200) {
       localStorage.removeItem('user')
       localStorage.removeItem('token')
+      localStorage.removeItem('updateProject')
       dispatch({
         type: authConstants.LOGOUT_SUCCESS
       })
