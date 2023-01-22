@@ -13,7 +13,6 @@ function Projectdetails () {
   const projects = useSelector(state => state.projects)
   const { project } = projects
 
-
   useEffect(() => {
     dispatch(getProjectById(params.id))
   }, [])
@@ -29,8 +28,7 @@ function Projectdetails () {
 
   return (
     <>
-      <div className='render-loading'></div>
-
+      <RenderLoading />
       {Object.keys(project).length > 0 ? (
         <div className='single-project-container'>
           <p>{project.projectName}</p>
