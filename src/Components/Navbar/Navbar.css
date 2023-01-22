@@ -56,7 +56,7 @@ nav > button {
 @media screen and (max-width: 500px) {
      nav {
           justify-content: space-between;
-          padding: 20px;
+          padding: 10px;
      }
      nav > div > input {
           width: 100px;
