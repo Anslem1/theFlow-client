@@ -8,7 +8,7 @@ import RenderLoading from '../../Components/LoadingPage/RenderLoading'
 function Projects () {
   const auth = useSelector(state => state.auth)
   const projects = useSelector(state => state.projects)
-  console.log(projects.loading)
+
 
   return (
     <>

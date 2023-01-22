@@ -20,7 +20,6 @@ const initialState = {
 }
 
 export default (state = initialState, action) => {
-  console.log(action)
   switch (action.type) {
     case authConstants.LOGIN_REQUEST:
       state = {
@@ -43,7 +42,7 @@ export default (state = initialState, action) => {
         ...state,
         error: action.payload.error,
         authenticating: false,
-        authenticated: false,
+        authenticated: false
       }
       break
     case userSignUpConstants.USER_SIGNUP_REQUEST:

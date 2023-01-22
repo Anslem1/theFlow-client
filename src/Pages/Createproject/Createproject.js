@@ -55,7 +55,7 @@ function CreateProjectPage () {
     setProjectTechnologies(list)
   }
 
-  console.log(projectTechnologies)
+ 
   function createProject () {
     const form = new FormData()
     if (projectImages.length > 5) {
@@ -79,7 +79,7 @@ function CreateProjectPage () {
     dispatch(addProject(form, navigate))
   }
 
-  console.log(updateProjectData)
+
 
   function updateProject () {
     const form = new FormData()

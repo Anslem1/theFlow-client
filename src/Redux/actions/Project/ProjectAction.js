@@ -20,7 +20,7 @@ export function getProjects () {
           payload: { error: res.data.response.message }
         })
       }
-      console.log({ res })
+     
     } catch (error) {
       console.log({ error })
     }
@@ -28,7 +28,7 @@ export function getProjects () {
 }
 
 export function getProjectById (id) {
-  console.log(id)
+ 
   return async dispatch => {
     try {
       dispatch({ type: projectConstants.GET_PROJECT_DETAILS_BY_ID_REQUEST })
@@ -53,9 +53,9 @@ export function getProjectBySearchParam (search, navigate) {
     try {
       dispatch({ type: projectConstants.GET_PROJECT_DETAILS_BY_SEARCH_REQUEST })
       const res = await axios.get(`/project/get/search/${search}`)
-      console.log(res)
+   
       if (res.status === 200) {
-        console.log(res.data.project)
+
         dispatch({
           type: projectConstants.GET_PROJECT_DETAILS_BY_SEARCH_SUCCESS,
           payload: { projects: res.data.project }
@@ -76,9 +76,9 @@ export function addProject (form, navigate) {
     try {
       dispatch({ type: projectConstants.ADD_PROJECT_REQUEST })
       const res = await axios.post('/project/create', form)
-      console.log(res)
+
       if (res.status === 200) {
-        console.log({ res })
+   
         dispatch({
           type: projectConstants.ADD_PROJECT_SUCCESS,
           payload: { project: res.data.project }
@@ -106,10 +106,9 @@ export function updateProjectById (id, body, navigate) {
     try {
       dispatch({ type: projectConstants.UPDATE_PROJECT_REQUEST })
       const res = await axios.put(`/project/update/${id}`, body)
-      console.log(res)
+     
       if (res.status === 200) {
-        console.log({ res })
-        dispatch({
+                dispatch({
           type: projectConstants.UPDATE_PROJECT_SUCCESS
         })
         dispatch(getProjects())
@@ -132,11 +131,11 @@ export function updateProjectById (id, body, navigate) {
 
 export function deleteProjectById (id, navigate) {
   return async dispatch => {
-    console.log(id)
+ 
     try {
       dispatch({ type: projectConstants.DELETE_PROJECT_REQUEST })
       const res = await axios.delete(`/project/delete/${id}`)
-      console.log(res)
+  
       if (res.status === 200) {
         console.log({ res })
         dispatch({

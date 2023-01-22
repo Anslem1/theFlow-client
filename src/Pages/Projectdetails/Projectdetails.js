@@ -12,7 +12,7 @@ function Projectdetails () {
 
   const projects = useSelector(state => state.projects)
   const { project } = projects
-  console.log(project)
+
 
   useEffect(() => {
     dispatch(getProjectById(params.id))
