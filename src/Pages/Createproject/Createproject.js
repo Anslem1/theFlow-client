@@ -8,7 +8,6 @@ import './Createproject.css'
 function CreateProjectPage () {
   const updateProjectData = JSON.parse(localStorage.getItem('updateProject'))
 
-
   const [projectName, setProjectName] = useState(
     updateProjectData ? updateProjectData.projectName : ''
   )
@@ -55,7 +54,6 @@ function CreateProjectPage () {
     setProjectTechnologies(list)
   }
 
- 
   function createProject () {
     const form = new FormData()
     if (projectImages.length > 5) {
@@ -78,8 +76,6 @@ function CreateProjectPage () {
 
     dispatch(addProject(form, navigate))
   }
-
-
 
   function updateProject () {
     const form = new FormData()
@@ -141,9 +137,8 @@ function CreateProjectPage () {
             <label>Project's technologies</label>
             {projectTechnologies.map((technology, index) => (
               <>
-                <div>
+                <div key={index}>
                   <input
-                    key={index}
                     type='text'
                     name='technology'
                     placeholder='Php, Python, React, Django'
