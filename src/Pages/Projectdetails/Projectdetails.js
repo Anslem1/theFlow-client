@@ -61,7 +61,9 @@ function Projectdetails () {
               </p>
             )}
 
-            <a href={`${project.projectSite}`}>Your project site</a>
+            <a href={`${project.projectSite}`} style={{ marginBottom: '20px' }}>
+              Your project site
+            </a>
 
             <p className='project-technology'>
               <span>Type:</span> {project.projectType}
