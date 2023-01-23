@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 import { getProjectBySearchParam, signOutUser } from '../../Redux/actions'
+import RenderLoading from '../LoadingPage/RenderLoading'
 import './Navbar.css'
 
 function Navbar () {

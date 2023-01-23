@@ -76,6 +76,7 @@ useEffect(() => {
             <button>Sign up</button>
           </div>
           {error && <p className='is-error'>{auth.error}</p>}
+        
 
           <p className='is-new'>
             Have an account on theFlow? <Link to='/signin'>Sign in</Link>
