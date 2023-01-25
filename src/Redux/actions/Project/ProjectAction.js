@@ -8,20 +8,22 @@ export function getProjects () {
       const res = await axios.get('/project/get')
       if (res.status === 200) {
         const { projects } = res.data
-        console.log({ projects })
+   
 
         dispatch({
           type: projectConstants.GET_PROJECTS_SUCCESS,
           payload: { projects }
         })
-      } else {
-        dispatch({
-          type: projectConstants.GET_PROJECTS_FAILURE,
-          payload: { error: res.data.response.message }
-        })
       }
     } catch (error) {
-      console.log({ error })
+      console.log({ error, message: 'hehe' })
+      dispatch({
+        type: projectConstants.GET_PROJECTS_FAILURE,
+        payload: {
+          error:
+            error.response.data.error.message || error.data.response.message
+        }
+      })
     }
   }
 }

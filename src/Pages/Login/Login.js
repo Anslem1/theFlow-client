@@ -4,11 +4,12 @@ import { SigninUser } from '../../Redux/actions'
 import { Link } from 'react-router-dom'
 import './Login.css'
 import RenderLoading from '../../Components/LoadingPage/RenderLoading'
+import GoogleOauthLogin from '../../oAuth/GoogleOauthLogin'
 
 function Login () {
   const [email, setEmail] = useState('')
-  const [error, setError] = useState(false)
   const [password, setPassword] = useState('')
+  const [error, setError] = useState(false)
   const dispatch = useDispatch()
   const auth = useSelector(state => state.auth)
 
@@ -23,9 +24,10 @@ function Login () {
 
   useEffect(() => {
     auth.error && setError(true)
-    setTimeout(() => {
-      setError(false)
-    }, 3000)
+    !auth.authenticated &&
+      setTimeout(() => {
+        setError(false)
+      }, 8000)
   }, [auth.authenticating])
 
   return (
@@ -61,7 +63,9 @@ function Login () {
           <button>Sign in</button>
         </form>
 
-        {error && <p className='is-error'>{auth.error}</p>}
+        {error && auth.error !== 'Email already exist' && (
+          <p className='is-error'>{auth.error}</p>
+        )}
 
         <p className='is-new'>
           New to theFlow?{' '}
@@ -69,6 +73,7 @@ function Login () {
             <Link to='/signup'>Sign up</Link>
           </span>
         </p>
+        <GoogleOauthLogin />
       </div>
     </main>
   )

@@ -6,8 +6,11 @@ function RenderLoading () {
   const auth = useSelector(state => state.auth)
   const project = useSelector(state => state.projects)
 
-
-  return (auth.authenticating || project.loading) && <LoadingPage />
+  return (
+    (auth.authenticating || project.loading || auth.signingOut) && (
+      <LoadingPage />
+    )
+  )
 }
 
 export default RenderLoading

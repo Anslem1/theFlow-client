@@ -34,10 +34,7 @@ export function SignUpUser (user) {
       dispatch({
         type: userSignUpConstants.USER_SIGNUP_FAILURE,
         payload: {
-          error:
-            error.response.data.error.message ||
-            error.response.data.message ||
-            error.response.data.error
+          error: error.response.data.message
         }
       })
     }
@@ -51,6 +48,7 @@ export function SigninUser (user) {
       const res = await axios.post('/auth/signin', {
         ...user
       })
+
       if (res.status === 200) {
         const { token, user } = res.data
         localStorage.setItem('token', token)
@@ -69,9 +67,9 @@ export function SigninUser (user) {
         type: authConstants.LOGIN_FAILURE,
         payload: {
           error:
-            error.response.data.error.message ||
-            error.response.data.message ||
-            error.response.data.error
+            error.response.data?.message ||
+            error.response.data.error?.message ||
+            error.response.data?.error
         }
       })
     }
@@ -103,7 +101,8 @@ export function signOutUser () {
       localStorage.removeItem('token')
       localStorage.removeItem('updateProject')
       dispatch({
-        type: authConstants.LOGOUT_SUCCESS
+        type: authConstants.LOGOUT_SUCCESS,
+        loading: false
       })
     } else {
       dispatch({

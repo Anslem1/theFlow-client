@@ -9,6 +9,7 @@ import Projectdetails from './Pages/Projectdetails/Projectdetails'
 import { getProjects, isUserSignedin } from './Redux/actions'
 import { useDispatch, useSelector } from 'react-redux'
 import CreateProject from './Pages/Createproject/Createproject'
+import { gapi } from 'gapi-script'
 
 function App () {
   const auth = useSelector(state => state.auth)
@@ -22,6 +23,22 @@ function App () {
       dispatch(isUserSignedin())
     }
   }, [auth.authenticated])
+
+  // useEffect(() => {
+  //   function start () {
+  //     gapi.client
+  //       .init({
+  //         clientId: process.env.REACT_APP_CLIENT_ID,
+  //         // scope: [
+  //         //   'https://www.googleapis.com/auth/userinfo.profile',
+  //         //   'https://www.googleapis.com/auth/userinfo.email'
+  //         // ]
+  //         scope: 'profile email'
+  //       })
+
+  //   }
+  //   gapi.load('auth2', start)
+  // }, [])
 
   return (
     <>

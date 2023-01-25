@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { SignUpUser } from '../../Redux/actions'
 import { Link } from 'react-router-dom'
 import RenderLoading from '../../Components/LoadingPage/RenderLoading'
+import GoogleOauthSignUp from '../../oAuth/GoogleOauthSignUp'
 
 function Signup () {
   const dispatch = useDispatch()
@@ -13,7 +14,7 @@ function Signup () {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState(false)
-    const auth = useSelector(state => state.auth)
+  const auth = useSelector(state => state.auth)
 
   function userSignUp (e) {
     e.preventDefault()
@@ -24,13 +25,13 @@ function Signup () {
     }
     dispatch(SignUpUser(user))
   }
-useEffect(() => {
-  auth.error && setError(true)
-  setTimeout(() => {
-    setError(false)
-  }, 3000)
-}, [auth.authenticating])
-
+  useEffect(() => {
+    auth.error && setError(true)
+    !auth.authenticated &&
+      setTimeout(() => {
+        setError(false)
+      }, 8000)
+  }, [auth.authenticating])
 
   return (
     <>
@@ -75,12 +76,14 @@ useEffect(() => {
             </div>
             <button>Sign up</button>
           </div>
-          {error && <p className='is-error'>{auth.error}</p>}
-        
+          {error && auth.error !== 'Wrong email or password' && (
+            <p className='is-error'>{auth.error}</p>
+          )}
 
           <p className='is-new'>
             Have an account on theFlow? <Link to='/signin'>Sign in</Link>
           </p>
+          <GoogleOauthSignUp />
         </form>
       </main>
     </>
