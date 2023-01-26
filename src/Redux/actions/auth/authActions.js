@@ -81,7 +81,7 @@ export function forgotPassword (email) {
     try {
       dispatch({ type: authConstants.RESET_PASSWORD_REQUEST })
       const res = await axios.post('/auth/forgot-password', email)
-      console.log(res)
+     
       if (res.status === 200) {
         dispatch({
           type: authConstants.RESET_PASSWORD_SUCCESS,
@@ -91,7 +91,7 @@ export function forgotPassword (email) {
         })
       }
     } catch (error) {
-      console.log({ error })
+
 
       dispatch({
         type: authConstants.RESET_PASSWORD_FAILURE,
