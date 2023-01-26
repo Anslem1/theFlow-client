@@ -10,6 +10,7 @@ import { getProjects, isUserSignedin } from './Redux/actions'
 import { useDispatch, useSelector } from 'react-redux'
 import CreateProject from './Pages/Createproject/Createproject'
 import { gapi } from 'gapi-script'
+import PasswordReset from './Pages/PasswordReset/PasswordReset'
 
 function App () {
   const auth = useSelector(state => state.auth)
@@ -52,6 +53,10 @@ function App () {
         <Route
           path='/project/create'
           element={token ? <CreateProject /> : <Login />}
+        />
+        <Route
+          path='/reset'
+          element={token ? <Projects /> : <PasswordReset />}
         />
         <Route path='/signup' element={token ? <Projects /> : <Signup />} />
         <Route path='/signin' element={token ? <Projects /> : <Login />} />

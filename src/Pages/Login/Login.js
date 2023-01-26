@@ -74,6 +74,9 @@ function Login () {
           </span>
         </p>
         <GoogleOauthLogin />
+        <Link to='/reset' className='is-new'>
+          <p>Forgot password?</p>
+        </Link>
       </div>
     </main>
   )

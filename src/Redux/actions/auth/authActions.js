@@ -76,6 +76,31 @@ export function SigninUser (user) {
   }
 }
 
+export function forgotPassword (email) {
+  return async dispatch => {
+    try {
+      dispatch({ type: authConstants.RESET_PASSWORD_REQUEST })
+      const res = await axios.post('/auth/forgot-password', email)
+      console.log(res)
+      if (res.status === 200) {
+        dispatch({
+          type: authConstants.RESET_PASSWORD_SUCCESS,
+          payload: {
+            message: res.data.message
+          }
+        })
+      }
+    } catch (error) {
+      console.log({ error })
+
+      dispatch({
+        type: authConstants.RESET_PASSWORD_FAILURE,
+        payload: { error: error.response.data.message }
+      })
+    }
+  }
+}
+
 export function isUserSignedin () {
   return async dispatch => {
     const token = localStorage.getItem('token')

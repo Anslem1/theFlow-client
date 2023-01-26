@@ -16,10 +16,13 @@ const initialState = {
   signingOut: false,
   signedOut: false,
   error: null,
+  resetError: null,
+  passwordReset: false,
   message: ''
 }
 
 export default (state = initialState, action) => {
+  console.log(action)
   switch (action.type) {
     case authConstants.LOGIN_REQUEST:
       state = {
@@ -89,6 +92,30 @@ export default (state = initialState, action) => {
         signingOut: false,
         signedOut: false,
         error: action.payload.error
+      }
+      break
+    case authConstants.RESET_PASSWORD_REQUEST:
+      state = {
+        ...state,
+        loading: true,
+        passwordReset: false
+      }
+      break
+    case authConstants.RESET_PASSWORD_SUCCESS:
+      state = {
+        ...state,
+        loading: false,
+        passwordReset: true,
+        resetError: null,
+        message: action.payload.message
+      }
+      break
+    case authConstants.RESET_PASSWORD_FAILURE:
+      state = {
+        ...state,
+        message: '',
+        loading: false,
+        resetError: action.payload.error
       }
       break
   }
