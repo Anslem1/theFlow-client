@@ -2,6 +2,7 @@ import { projectConstants } from '../../actions/constants/constants'
 
 const initialState = {
   projects: [],
+  projectBySearch: [],
   project: {},
   error: null,
   message: null,
@@ -39,7 +40,7 @@ export default (state = initialState, action) => {
     case projectConstants.GET_PROJECT_DETAILS_BY_SEARCH_SUCCESS:
       state = {
         ...state,
-        projects: action.payload.projects,
+        projectBySearch: action.payload.projectBySearch,
         loading: false
       }
       break

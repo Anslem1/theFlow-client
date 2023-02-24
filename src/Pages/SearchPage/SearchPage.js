@@ -1,19 +1,17 @@
-import React, { useEffect, useState } from 'react'
-import './Projects.css'
-import { useSelector, useDispatch } from 'react-redux'
-import { getProjects } from '../../Redux/actions/Project/ProjectAction'
+import React from 'react'
+import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import RenderLoading from '../../Components/LoadingPage/RenderLoading'
 
-function Projects () {
+function SearchPage () {
   const auth = useSelector(state => state.auth)
-  const projects = useSelector(state => state.projects)
+  const projects = useSelector(state => state.projects.projectBySearch)
 
   return (
     <>
       <RenderLoading />
       <div className='all-project-container'>
-        {projects.projects.length > 0 ? (
+        {projects.length > 0 ? (
           <>
             <div>
               <h1>Hi, {auth.user.username}</h1>
@@ -33,7 +31,7 @@ function Projects () {
             </div>
             <div className='all-project-content-container'>
               <div className='project-container'>
-                {projects.projects.map(project => (
+                {projects.map(project => (
                   <div className='all-project-content' key={project._id}>
                     <Link
                       to={`/product-details/${project.projectName}/${project._id}`}
@@ -63,7 +61,7 @@ function Projects () {
                 marginTop: '20px'
               }}
             >
-              There's nothing here!
+              There's no project with that name!
             </h1>
 
             <button className='create-project-btn no-project-btn'>
@@ -79,4 +77,4 @@ function Projects () {
   )
 }
 
-export default Projects
+export default SearchPage

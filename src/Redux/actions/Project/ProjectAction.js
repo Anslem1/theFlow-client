@@ -8,7 +8,6 @@ export function getProjects () {
       const res = await axios.get('/project/get')
       if (res.status === 200) {
         const { projects } = res.data
-   
 
         dispatch({
           type: projectConstants.GET_PROJECTS_SUCCESS,
@@ -34,7 +33,7 @@ export function getProjectById (id) {
       dispatch({ type: projectConstants.GET_PROJECT_DETAILS_BY_ID_REQUEST })
       const res = await axios.get(`/project/get/${id}`)
       if (res.status === 200) {
-        console.log(res.data.project)
+        
         dispatch({
           type: projectConstants.GET_PROJECT_DETAILS_BY_ID_SUCCESS,
           payload: { project: res.data.project }
@@ -48,18 +47,19 @@ export function getProjectById (id) {
     }
   }
 }
-export function getProjectBySearchParam (search, navigate) {
+export function getProjectBySearchParam (search, navigate, setSearch) {
   return async dispatch => {
     try {
       dispatch({ type: projectConstants.GET_PROJECT_DETAILS_BY_SEARCH_REQUEST })
       const res = await axios.get(`/project/get/search/${search}`)
-
+      console.log({ res }, 'search')
       if (res.status === 200) {
         dispatch({
           type: projectConstants.GET_PROJECT_DETAILS_BY_SEARCH_SUCCESS,
-          payload: { projects: res.data.project }
+          payload: { projectBySearch: res.data.project }
         })
-        navigate('/')
+        navigate('/project/search')
+        // setSearch('')
       }
     } catch (error) {
       dispatch({
@@ -99,7 +99,7 @@ export function addProject (form, navigate) {
     }
   }
 }
-export function updateProjectById (id, body, navigate) {
+export function updateProjectById(id, body, navigate) {
   return async dispatch => {
     try {
       dispatch({ type: projectConstants.UPDATE_PROJECT_REQUEST })
@@ -120,7 +120,7 @@ export function updateProjectById (id, body, navigate) {
       dispatch({
         type: projectConstants.UPDATE_PROJECT_FAILURE,
         payload: {
-          error: error.response.data.error.message
+          error: error.response.data.error?.message
         }
       })
     }
@@ -134,7 +134,7 @@ export function deleteProjectById (id, navigate) {
       const res = await axios.delete(`/project/delete/${id}`)
 
       if (res.status === 200) {
-        console.log({ res })
+      
         dispatch({
           type: projectConstants.DELETE_PROJECT_SUCCESS,
           payload: { message: res.data.message }

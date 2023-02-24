@@ -1,14 +1,16 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
-import { getProjectBySearchParam, signOutUser } from '../../Redux/actions'
+import {
+  getProjectBySearchParam,
+  signOutUser,
+  getProjects
+} from '../../Redux/actions'
 import RenderLoading from '../LoadingPage/RenderLoading'
 import './Navbar.css'
 
-function Navbar () {
+function Navbar ({ search, setSearch }) {
   const navigate = useNavigate()
-
-  const [search, setSearch] = useState('')
 
   const token = localStorage.getItem('token')
   const dispatch = useDispatch()
@@ -17,7 +19,7 @@ function Navbar () {
   }
 
   function searchByParams () {
-    dispatch(getProjectBySearchParam(search, navigate))
+    dispatch(getProjectBySearchParam(search, navigate, setSearch))
 
     return
   }
@@ -25,7 +27,7 @@ function Navbar () {
   return (
     <nav>
       <p>
-        <Link to='/'>
+        <Link to='/' onClick={() => setSearch('')}>
           <span>the</span>Flow
         </Link>
       </p>
@@ -37,7 +39,11 @@ function Navbar () {
               onChange={e => setSearch(e.target.value)}
               className='search-input'
               value={search}
-              onKeyDown={e => e.code === 'Enter' && searchByParams()}
+              onKeyDown={e => {
+                if (e.code === 'Enter') {
+                  searchByParams(navigate)
+                }
+              }}
             />
             <i
               className='fa-brands fa-searchengin'

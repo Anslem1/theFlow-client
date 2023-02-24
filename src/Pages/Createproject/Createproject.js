@@ -84,10 +84,9 @@ function CreateProjectPage () {
       return
     } else {
       for (const image of projectImages) {
-        form.append('projectImages', image)
+        form.append('projectImage', image)
       }
     }
-
     const projectTrchnologyArray = projectTechnologies.map(
       ({ technology }) => technology
     )
@@ -97,6 +96,7 @@ function CreateProjectPage () {
     form.append('projectType', projectType)
     form.append('projectGitUrl', projectGitUrl)
     form.append('projectSite', projectSite)
+
     dispatch(updateProjectById(updateProjectData._id, form, navigate))
   }
 
@@ -192,17 +192,17 @@ function CreateProjectPage () {
               value={projectGitUrl}
             />
           </div>
-          {!updateProjectData && (
-            <div className='project-file-container'>
-              <label>Project's image(s)</label>
-              <input
-                type='file'
-                name='projectImage'
-                onChange={e => setProjectImages([...e.target.files])}
-                multiple
-              />
-            </div>
-          )}
+          {/* {!updateProjectData && ( */}
+          <div className='project-file-container'>
+            <label>Project's image(s)</label>
+            <input
+              type='file'
+              name='projectImage'
+              onChange={e => setProjectImages([...e.target.files])}
+              multiple
+            />
+          </div>
+          {/* )} */}
         </div>
         {updateProjectData ? (
           <button onClick={updateProject}>Update project</button>
