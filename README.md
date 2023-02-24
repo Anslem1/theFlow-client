@@ -1,10 +1,16 @@
+<<<<<<< HEAD
 # Getting Started with theFLow
+=======
+# Getting Started with The flow
+>>>>>>> f70620ee9e70d4355c5a8895f767ffbea863fa3d
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
 In the project directory, you can run:
+
+`npm i` to install all dependencies for this project
 
 ### `npm start`
 
