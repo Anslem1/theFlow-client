@@ -54,6 +54,9 @@
      align-items: center;
      gap: 5px;
      margin-bottom: 10px;
+ 
+     justify-content: center;
+     
 }
 .project-technology > span {
      font-family: Open sans;
