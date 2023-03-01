@@ -192,17 +192,17 @@ function CreateProjectPage () {
               value={projectGitUrl}
             />
           </div>
-          {/* {!updateProjectData && ( */}
-          <div className='project-file-container'>
-            <label>Project's image(s)</label>
-            <input
-              type='file'
-              name='projectImage'
-              onChange={e => setProjectImages([...e.target.files])}
-              multiple
-            />
-          </div>
-          {/* )} */}
+          {!updateProjectData && (
+            <div className='project-file-container'>
+              <label>Project's image(s)</label>
+              <input
+                type='file'
+                name='projectImage'
+                onChange={e => setProjectImages([...e.target.files])}
+                multiple
+              />
+            </div>
+          )}
         </div>
         {updateProjectData ? (
           <button onClick={updateProject}>Update project</button>
