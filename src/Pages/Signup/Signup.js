@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { SignUpUser } from '../../Redux/actions'
 import { Link } from 'react-router-dom'
 import RenderLoading from '../../Components/LoadingPage/RenderLoading'
-import GoogleOauthSignUp from '../../oAuth/GoogleOauthSignUp'
+
 
 function Signup () {
   const dispatch = useDispatch()
@@ -83,7 +83,7 @@ function Signup () {
           <p className='is-new'>
             Have an account on theFlow? <Link to='/signin'>Sign in</Link>
           </p>
-          <GoogleOauthSignUp />
+
         </form>
       </main>
     </>

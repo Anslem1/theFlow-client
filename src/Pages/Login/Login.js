@@ -4,7 +4,7 @@ import { SigninUser } from '../../Redux/actions'
 import { Link } from 'react-router-dom'
 import './Login.css'
 import RenderLoading from '../../Components/LoadingPage/RenderLoading'
-import GoogleOauthLogin from '../../oAuth/GoogleOauthLogin'
+
 
 function Login () {
   const [email, setEmail] = useState('')
@@ -73,7 +73,6 @@ function Login () {
             <Link to='/signup'>Sign up</Link>
           </span>
         </p>
-        <GoogleOauthLogin />
         <Link to='/reset' className='is-new'>
           <p>Forgot password?</p>
         </Link>
